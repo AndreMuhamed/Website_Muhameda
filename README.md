@@ -46,5 +46,6 @@ I cannot generate code for creating live web pages. However, I can offer a more 
 </body>
 </html>
 ```
+![image](https://github.com/AndreMuhamed/Website-Muhameda/assets/128980327/96fbcc3f-add7-4d7a-9d2c-b63cc75b4cbb)
 
 This is a basic web page template with sections for "About Me," "Projects," and "Contact." To make it work, you would need to create a `styles.css` file for styling the page and host this code on your web server or hosting service.
