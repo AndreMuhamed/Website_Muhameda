@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="stylesheet" href="assets/style.css">
+    <script defer src="assets/main.js"></script>
+    <title>Website Muhameda | Weather</title>
+    <link href="assets/Wed.png" rel="shortcut icon" type="image/icon">
+</head>
+<body>
+    <svg display="none">
+        <symbol id="wind" viewBox="0 0 16 16">
+            <g fill="none" stroke="hsl(0,0%,100%)" stroke-linecap="round" stroke-width="2">
+                <polyline points="2 3,10 3" />
+                <polyline points="6 8,14 8" />
+                <polyline points="2 13,10 13" />
+            </g>
+        </symbol>
+        <symbol id="visibility" viewBox="0 0 16 16">
+            <g fill="none" stroke="hsl(0,0%,100%)" stroke-width="2">
+                <ellipse cx="8" cy="8" rx="7" ry="4" />
+                <circle cx="8" cy="8" r="2" />
+            </g>
+        </symbol>
+        <symbol id="air-quality" viewBox="0 0 16 16">
+            <g fill="hsl(0,0%,100%)">
+                <circle cx="4" cy="11" r="2" />
+                <circle cx="8" cy="5" r="2" />
+                <circle cx="12" cy="11" r="2" />
+            </g>
+        </symbol>
+        <symbol id="humidity" viewBox="0 0 16 16">
+            <g fill="none" stroke="hsl(0,0%,100%)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2">
+                <path d="M 1 3 C 6 7, 10 0, 15 4" transform="translate(0,-1)" />
+                <path d="M 1 3 C 6 7, 10 0, 15 4" transform="translate(0,3)" />
+                <path d="M 1 3 C 3 5, 6 4, 8 3" transform="translate(0,7)" />
+                <path d="M 4 1 C -3 8, 11 8, 4 1" transform="translate(8,8)" />
+            </g>
+        </symbol>
+        <symbol id="sunny" viewBox="0 0 48 48">
+            <g stroke="hsl(53,90%,50%)" stroke-linecap="round" stroke-width="4">
+                <polyline points="24 24,24 21" transform="rotate(0,24,24) translate(0,-18)" />
+                <polyline points="24 24,24 21" transform="rotate(45,24,24) translate(0,-18)" />
+                <polyline points="24 24,24 21" transform="rotate(90,24,24) translate(0,-18)" />
+                <polyline points="24 24,24 21" transform="rotate(135,24,24) translate(0,-18)" />
+                <polyline points="24 24,24 21" transform="rotate(180,24,24) translate(0,-18)" />
+                <polyline points="24 24,24 21" transform="rotate(225,24,24) translate(0,-18)" />
+                <polyline points="24 24,24 21" transform="rotate(270,24,24) translate(0,-18)" />
+                <polyline points="24 24,24 21" transform="rotate(315,24,24) translate(0,-18)" />
+            </g>
+            <circle cx="24" cy="24" r="12" fill="hsl(53,90%,50%)" />
+        </symbol>
+        <symbol id="cloudy" viewBox="0 0 48 48">
+            <g fill="hsl(0,0%,100%)" transform="translate(0,6)">
+                <rect x="0" y="12" width="48" height="20" rx="10" ry="10" />
+                <circle cx="28" cy="14" r="14" />
+                <circle cx="14" cy="10" r="6" />
+            </g>
+        </symbol>
+    </svg>
+    <main>
+        <details id="widget1" class="widget" open>
+            <summary class="widget__btn">
+                <span class="widget__top">
+                    <span data-stat="city">-</span>
+                    <small class="widget__weather">
+                        <span data-stat="kind">-</span>
+                        <span class="widget__bull">&bull;</span>
+                        <time data-stat="time">-</time>
+                    </small>
+                </span>
+                <div class="widget__temp">
+                    <span data-stat="temperature">-</span><sup>&deg;<span data-stat="temperature_scale">-</span></sup>
+                </div>
+            </summary>
+            <div class="widget__details">
+                <svg class="widget__weather-symbol" width="16px" height="16px" aria-hidden="true">
+                    <use href="#" data-symbol />
+                </svg>
+                <span class="widget__detail">
+                    <small class="widget__detail-name">Wind</small>
+                    <br>
+                    <span class="widget__detail-value">
+                        <svg class="widget__detail-icon" width="16px" height="16px" aria-hidden="true">
+                            <use href="#wind" />
+                        </svg>
+                        <span data-stat="wind">-</span>
+                    </span>
+                </span>
+                <span class="widget__detail">
+                    <small class="widget__detail-name">Visibility</small>
+                    <br>
+                    <span class="widget__detail-value">
+                        <svg class="widget__detail-icon" width="16px" height="16px" aria-hidden="true">
+                            <use href="#visibility" />
+                        </svg>
+                        <span data-stat="visibility">-</span>
+                    </span>
+                </span>
+                <span class="widget__detail">
+                    <small class="widget__detail-name">Air Quality</small>
+                    <br>
+                    <span class="widget__detail-value">
+                        <svg class="widget__detail-icon" width="16px" height="16px" aria-hidden="true">
+                            <use href="#air-quality" />
+                        </svg>
+                        <span data-stat="air_quality">-</span>
+                    </span>
+                </span>
+                <span class="widget__detail">
+                    <small class="widget__detail-name">Humidity</small>
+                    <br>
+                    <span class="widget__detail-value">
+                        <svg class="widget__detail-icon" width="16px" height="16px" aria-hidden="true">
+                            <use href="#humidity" />
+                        </svg>
+                        <span data-stat="humidity">-</span>
+                    </span>
+                </span>
+            </div>
+        </details>
+        <details id="widget2" class="widget">
+            <summary class="widget__btn">
+                <span class="widget__top">
+                    <span data-stat="city">-</span>
+                    <small class="widget__weather">
+                        <span data-stat="kind">-</span>
+                        <span class="widget__bull">&bull;</span>
+                        <time data-stat="time">-</time>
+                    </small>
+                </span>
+                <div class="widget__temp">
+                    <span data-stat="temperature">-</span><sup>&deg;<span data-stat="temperature_scale">-</span></sup>
+                </div>
+            </summary>
+            <div class="widget__details">
+                <svg class="widget__weather-symbol" width="16px" height="16px" aria-hidden="true">
+                    <use href="#" data-symbol />
+                </svg>
+                <span class="widget__detail">
+                    <small class="widget__detail-name">Wind</small>
+                    <br>
+                    <span class="widget__detail-value">
+                        <svg class="widget__detail-icon" width="16px" height="16px" aria-hidden="true">
+                            <use href="#wind" />
+                        </svg>
+                        <span data-stat="wind">-</span>
+                    </span>
+                </span>
+                <span class="widget__detail">
+                    <small class="widget__detail-name">Visibility</small>
+                    <br>
+                    <span class="widget__detail-value">
+                        <svg class="widget__detail-icon" width="16px" height="16px" aria-hidden="true">
+                            <use href="#visibility" />
+                        </svg>
+                        <span data-stat="visibility">-</span>
+                    </span>
+                </span>
+                <span class="widget__detail">
+                    <small class="widget__detail-name">Air Quality</small>
+                    <br>
+                    <span class="widget__detail-value">
+                        <svg class="widget__detail-icon" width="16px" height="16px" aria-hidden="true">
+                            <use href="#air-quality" />
+                        </svg>
+                        <span data-stat="air_quality">-</span>
+                    </span>
+                </span>
+                <span class="widget__detail">
+                    <small class="widget__detail-name">Humidity</small>
+                    <br>
+                    <span class="widget__detail-value">
+                        <svg class="widget__detail-icon" width="16px" height="16px" aria-hidden="true">
+                            <use href="#humidity" />
+                        </svg>
+                        <span data-stat="humidity">-</span>
+                    </span>
+                </span>
+            </div>
+        </details>
+    </main>
+</body>
+</html>

@@ -1,0 +1,226 @@
+* {
+	border: 0;
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+:root {
+	--hue: 223;
+	--bg: hsl(var(--hue),90%,90%);
+	--fg: hsl(var(--hue),90%,10%);
+	--primary: hsl(var(--hue),90%,50%);
+	--anim-dur: 0.4s;
+	--trans-dur: 0.3s;
+	--ease-in-out: cubic-bezier(0.67,0,0.33,1);
+	--ease-out: cubic-bezier(0.33,1,0.67,1);
+	font-size: calc(14px + (30 - 14) * (100vw - 280px) / (3840 - 280));
+}
+body,
+button {
+	color: var(--fg);
+	font: 1em/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+}
+body {
+	background: url("https://assets.codepen.io/416221/beach_landscape.jpg") center / cover, var(--bg);
+	height: 100vh;
+}
+main {
+	$mainBlur: 8px;
+	backdrop-filter: blur($mainBlur);
+	-webkit-backdrop-filter: blur($mainBlur);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 0.75em;
+	padding: 1.5em 0;
+	width: 100%;
+	height: min-content;
+	min-height: 100%;
+}
+.widget {
+	$widgetBlur: 16px;
+	background-color: hsla(var(--hue),90%,10%,0.35);
+	backdrop-filter: blur($widgetBlur);
+	-webkit-backdrop-filter: blur($widgetBlur);
+	border-radius: 1.75em;
+	color: hsl(0,0%,100%);
+	flex-shrink: 0;
+	position: relative;
+	width: 18em;
+	min-height: 4.5em;
+
+	&__btn,
+	&__details {
+		padding: 1em;
+		padding-inline-start: 1.25em;
+	}
+	&__btn {
+		background-color: hsla(var(--hue),90%,10%,0);
+		border-radius: 1.75em;
+		box-shadow: 0 0 0 0.125em hsla(var(--hue),90%,90%,0) inset;
+		color: currentColor;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		outline: transparent;
+		position: relative;
+		width: 100%;
+		transition:
+			background-color var(--trans-dur) var(--ease-in-out),
+			box-shadow calc(var(--trans-dur) / 2) var(--ease-in-out);
+		-webkit-tap-highlight-color: transparent;
+
+		&:focus-visible {
+			box-shadow: 0 0 0 0.125em hsla(var(--hue),90%,90%,1) inset;
+		}
+		&:hover {
+			background-color: hsla(var(--hue),90%,10%,0.1);
+		}
+		&::marker,
+		&::-webkit-details-marker {
+			display: none;
+		}
+	}
+	&__bull {
+		margin: 0 0.5em;
+	}
+	&__detail {
+		display: block;
+
+		&-icon {
+			display: block;
+			width: 1em;
+			height: 1em;
+		}
+		&-name {
+			font-size: 0.75em;
+			opacity: 0.8;
+		}
+		&-value {
+			display: flex;
+			align-items: center;
+			gap: 0.5em;
+		}
+	}
+	&__details {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		grid-gap: 1em;
+		padding-inline-end: 6em;
+		position: relative;
+	}
+	&__temp {
+		font-size: 3em;
+		line-height: 1;
+
+		sup {
+			display: inline-block;
+			font-size: 0.833rem;
+			line-height: 1;
+			transform: translateY(-66.7%);
+		}
+		[dir="rtl"] & {
+			right: auto;
+			left: 1rem;
+		}
+	}
+	&__top,
+	&__weather {
+		display: flex;
+	}
+	&__top {
+		flex: 1;
+		flex-direction: column;
+		margin-inline-end: 0.5em;
+	}
+	&__weather {
+		font-size: 0.75em;
+		line-height: 1;
+		opacity: 0.8;
+		text-transform: capitalize;
+
+		&-symbol {
+			display: block;
+			margin-bottom: 1em;
+			pointer-events: none;
+			position: absolute;
+			right: 1rem;
+			bottom: 100%;
+			width: 3em;
+			height: 3em;
+
+			[dir="rtl"] & {
+				right: auto;
+				left: 1rem;
+			}
+		}
+	}
+	&[open] &__btn {
+		border-radius: 1.75em 1.75em 0 0;
+	}
+	&.collapsing,
+	&.expanding {
+		overflow: hidden;
+	}
+	&.collapsing &__temp {
+		animation: widget-slide-up var(--anim-dur) var(--ease-out);
+	}
+	&.collapsing &__detail,
+	&.collapsing &__weather-symbol {
+		animation: widget-fade-out var(--anim-dur) var(--ease-out);
+	}
+	&[open] &__temp {
+		transform: translateY(9rem);
+	}
+	&.expanding &__temp {
+		animation: widget-slide-down var(--anim-dur) var(--ease-out);
+	}
+	&.expanding &__detail,
+	&.expanding &__weather-symbol {
+		animation: widget-fade-slide-in var(--anim-dur) var(--ease-out);
+	}
+	&.expanding &__detail {
+		@for $d from 2 through 4 {
+			&:nth-of-type(#{$d}) {
+				animation-delay: calc(var(--anim-dur) * #{(0.1 * ($d - 1))});
+			}
+		}
+	}
+}
+/* Animations */
+@keyframes widget-fade-out {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+}
+@keyframes widget-fade-slide-in {
+	from,
+	50% {
+		opacity: 0;
+		transform: translateY(50%);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+@keyframes widget-slide-down {
+	from {
+		transform: translateY(0);
+	}
+	to {
+		transform: translateY(9rem);
+	}
+}
+@keyframes widget-slide-up {
+	from {
+		transform: translateY(9rem);
+	}
+	to {
+		transform: translateY(0);
+	}
+}

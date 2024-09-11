@@ -1,0 +1,220 @@
+/* author: https://codepen.io/jkantner/pen/vYwoPOd
+Jon Kantner */
+
+* {
+  border: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --hue: 223;
+  --bg: hsl(var(--hue),90%,90%);
+  --fg: hsl(var(--hue),90%,10%);
+  --primary: hsl(var(--hue),90%,50%);
+  --anim-dur: 0.4s;
+  --trans-dur: 0.3s;
+  --ease-in-out: cubic-bezier(0.67,0,0.33,1);
+  --ease-out: cubic-bezier(0.33,1,0.67,1);
+  font-size: calc(14px + (30 - 14) * (100vw - 280px) / (3840 - 280));
+}
+
+body,
+button {
+  color: var(--fg);
+  font: 1em/1.5 -apple-system, BlinkMacSystemFont, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+body {
+  background: url("https://assets.codepen.io/416221/beach_landscape.jpg") center/cover, var(--bg);
+  height: 100vh;
+}
+
+main {
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75em;
+  padding: 1.5em 0;
+  width: 100%;
+  height: min-content;
+  min-height: 100%;
+}
+
+.widget {
+  background-color: hsla(var(--hue), 90%, 10%, 0.35);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 1.75em;
+  color: white;
+  flex-shrink: 0;
+  position: relative;
+  width: 18em;
+  min-height: 4.5em;
+}
+.widget__btn, .widget__details {
+  padding: 1em;
+  padding-inline-start: 1.25em;
+}
+.widget__btn {
+  background-color: hsla(var(--hue), 90%, 10%, 0);
+  border-radius: 1.75em;
+  box-shadow: 0 0 0 0.125em hsla(var(--hue), 90%, 90%, 0) inset;
+  color: currentColor;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  outline: transparent;
+  position: relative;
+  width: 100%;
+  transition: background-color var(--trans-dur) var(--ease-in-out), box-shadow calc(var(--trans-dur) / 2) var(--ease-in-out);
+  -webkit-tap-highlight-color: transparent;
+}
+.widget__btn:focus-visible {
+  box-shadow: 0 0 0 0.125em hsla(var(--hue), 90%, 90%, 1) inset;
+}
+.widget__btn:hover {
+  background-color: hsla(var(--hue), 90%, 10%, 0.1);
+}
+.widget__btn::marker, .widget__btn::-webkit-details-marker {
+  display: none;
+}
+.widget__bull {
+  margin: 0 0.5em;
+}
+.widget__detail {
+  display: block;
+}
+.widget__detail-icon {
+  display: block;
+  width: 1em;
+  height: 1em;
+}
+.widget__detail-name {
+  font-size: 0.75em;
+  opacity: 0.8;
+}
+.widget__detail-value {
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+}
+.widget__details {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1em;
+  padding-inline-end: 6em;
+  position: relative;
+}
+.widget__temp {
+  font-size: 3em;
+  line-height: 1;
+}
+.widget__temp sup {
+  display: inline-block;
+  font-size: 0.833rem;
+  line-height: 1;
+  transform: translateY(-66.7%);
+}
+[dir=rtl] .widget__temp {
+  right: auto;
+  left: 1rem;
+}
+.widget__top, .widget__weather {
+  display: flex;
+}
+.widget__top {
+  flex: 1;
+  flex-direction: column;
+  margin-inline-end: 0.5em;
+}
+.widget__weather {
+  font-size: 0.75em;
+  line-height: 1;
+  opacity: 0.8;
+  text-transform: capitalize;
+}
+.widget__weather-symbol {
+  display: block;
+  margin-bottom: 1em;
+  pointer-events: none;
+  position: absolute;
+  right: 1rem;
+  bottom: 100%;
+  width: 3em;
+  height: 3em;
+}
+[dir=rtl] .widget__weather-symbol {
+  right: auto;
+  left: 1rem;
+}
+.widget[open] .widget__btn {
+  border-radius: 1.75em 1.75em 0 0;
+}
+.widget.collapsing, .widget.expanding {
+  overflow: hidden;
+}
+.widget.collapsing .widget__temp {
+  animation: widget-slide-up var(--anim-dur) var(--ease-out);
+}
+.widget.collapsing .widget__detail, .widget.collapsing .widget__weather-symbol {
+  animation: widget-fade-out var(--anim-dur) var(--ease-out);
+}
+.widget[open] .widget__temp {
+  transform: translateY(9rem);
+}
+.widget.expanding .widget__temp {
+  animation: widget-slide-down var(--anim-dur) var(--ease-out);
+}
+.widget.expanding .widget__detail, .widget.expanding .widget__weather-symbol {
+  animation: widget-fade-slide-in var(--anim-dur) var(--ease-out);
+}
+.widget.expanding .widget__detail:nth-of-type(2) {
+  animation-delay: calc(var(--anim-dur) * 0.1);
+}
+.widget.expanding .widget__detail:nth-of-type(3) {
+  animation-delay: calc(var(--anim-dur) * 0.2);
+}
+.widget.expanding .widget__detail:nth-of-type(4) {
+  animation-delay: calc(var(--anim-dur) * 0.3);
+}
+
+/* Animations */
+@keyframes widget-fade-out {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+@keyframes widget-fade-slide-in {
+  from, 50% {
+    opacity: 0;
+    transform: translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes widget-slide-down {
+  from {
+    transform: translateY(0);
+  }
+  to {
+    transform: translateY(9rem);
+  }
+}
+@keyframes widget-slide-up {
+  from {
+    transform: translateY(9rem);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
