@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html class="no-js vlt-is--single-post vlt-is--footer-fixed" lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Website Muhameda / Privacy Policy</title>
+    <meta name="description" content="Personal CV/Resume HTML5 Template">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--Favicon-->
+    <link rel="icon" type="image/svg" href="https://andremuhamed.nexcord.pro/images/Wed.png">
+    <!--Framework-->
+    <link rel="stylesheet" href="assets/css/framework/bootstrap.min.css">
+    <!--Fonts-->
+    <link rel="stylesheet" href="assets/fonts/Gilroy/style.css">
+    <!--Icons-->
+    <link rel="stylesheet" href="assets/fonts/LineIcons/Pro-Regular/font-css/LineIcons.css">
+    <!--Plugins-->
+    <link rel="stylesheet" href="assets/css/vlt-plugins.min.css">
+    <!--Style-->
+    <link rel="stylesheet" href="assets/css/vlt-main.min.css">
+    <!--Custom-->
+    <link rel="stylesheet" href="assets/css/custom.css">
+</head>
+
+<body class="animsition">
+    <div class="vlt-gap-140"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <!--Animated Block-->
+                <div class="vlt-animated-block" data-animation-name="fadeInUpSm" style="animation-delay:0s; animation-duration:700ms;">
+                    <h3 id="policy-title">Privacy Policy.</h3>
+                </div>
+                <div class="vlt-gap-60"></div>
+                <!--Animated Block-->
+                <div class="vlt-animated-block" data-animation-name="fadeInUpSm" style="animation-delay:.1s; animation-duration:700ms;">
+                    <div id="policy-content">
+                        <!-- Content will be loaded here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="vlt-gap-140"></div>
+    
+    <!--Footer-->
+    <footer class="vlt-footer vlt-footer--default vlt-footer--fixed">
+        <div class="vlt-footer-copyright">
+            <p>© Copyright 2035 - All rights reserved.</p>
+        </div>
+        <div class="vlt-language-switcher">
+            <a href="#" data-lang="en" class="lang-switcher is-active">Eng.</a>
+            <a href="#" data-lang="uk" class="lang-switcher">Ukr.</a>
+            <a href="#" data-lang="ru" class="lang-switcher">Rus.</a>
+        </div>
+    </footer>
+
+    <!--Libs-->
+    <script src="assets/vendors/jquery-3.5.1.min.js"></script>
+    <script src="assets/scripts/vlt-plugins.min.js"></script>
+    <script src="assets/scripts/vlt-helpers.js"></script>
+    <script src="assets/scripts/vlt-controllers.min.js"></script>
+    <script>
+        async function loadTranslations() {
+            const response = await fetch('assets/policy.json');
+            return await response.json();
+        }
+
+        let translations = {};
+
+        async function setLanguage(lang) {
+            if (!translations[lang]) {
+                translations = await loadTranslations();
+            }
+            const texts = translations[lang];
+            document.getElementById('policy-title').innerText = texts.title;
+            let contentHtml = `<p>${texts.content}</p>`;
+            for (let key in texts.sections) {
+                contentHtml += `<h4>${texts.sections[key].title}</h4><p>${texts.sections[key].content}</p>`;
+            }
+            document.getElementById('policy-content').innerHTML = contentHtml;
+        }
+
+        // Handle language switching
+        document.querySelectorAll('.lang-switcher').forEach(button => {
+            button.addEventListener('click', async (event) => {
+                event.preventDefault();
+                const lang = event.currentTarget.getAttribute('data-lang');
+                await setLanguage(lang);
+                document.querySelectorAll('.lang-switcher').forEach(btn => btn.classList.remove('is-active'));
+                event.currentTarget.classList.add('is-active');
+            });
+        });
+
+        // Set default language
+        setLanguage('en');
+    </script>
+</body>
+</html>
+
+

@@ -1,0 +1,32 @@
+{
+  "en": {
+    "title": "Website Muhameda / Policy botse",
+    "political_news": "Political news.",
+    "terms_of_use": "Terms of Use.",
+    "terms_excerpt": "Terms of Use refers to a legal agreement between a service provider and the user, outlining the rules, obligations, and conditions under which the user can access and use the service.",
+    "fortune_teller": "Fortune teller.",
+    "fortune_excerpt": "I think.",
+    "privacy_policy": "Privacy Policy.",
+    "privacy_excerpt": "Privacy Policy is a legal document that explains how a company or service collects, uses, stores, and protects users' personal information. It outlines what data is collected, how it is handled."
+  },
+  "uk": {
+    "title": "Website Muhameda / Policy botse",
+    "political_news": "Політичні новини.",
+    "terms_of_use": "Умови використання.",
+    "terms_excerpt": "Умови використання - це угода між постачальником послуг і користувачем, яка визначає правила, обов'язки та умови користування.",
+    "fortune_teller": "Ворожка.",
+    "fortune_excerpt": "Я думаю.",
+    "privacy_policy": "Політика конфіденційності.",
+    "privacy_excerpt": "Політика конфіденційності - це документ, який пояснює, як компанія збирає, використовує, зберігає і захищає особисту інформацію користувачів."
+  },
+  "rus": {
+    "title": "Website Muhameda / Policy botse",
+    "political_news": "Политические новости.",
+    "terms_of_use": "Условия использования.",
+    "terms_excerpt": "Условия использования - это соглашение между поставщиком услуг и пользователем, описывающее правила и условия использования услуги.",
+    "fortune_teller": "Гадалка.",
+    "fortune_excerpt": "Я думаю.",
+    "privacy_policy": "Политика приватности.",
+    "privacy_excerpt": "Политика приватности - это документ, который объясняет, как компания собирает, использует, хранит и защищает личную информацию пользователей."
+  }
+}
