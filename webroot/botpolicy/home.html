@@ -127,7 +127,7 @@
             const content = document.querySelectorAll('[data-translate]');
 
             function loadLanguage(language) {
-                fetch('assets/home.json')
+                fetch('assets/language/home.json')
                     .then(response => response.json())
                     .then(translations => {
                         const langTranslations = translations[language];
