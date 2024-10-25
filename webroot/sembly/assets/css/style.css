@@ -335,7 +335,7 @@ input[type=number]:focus,
   border: 1px solid #222F43;
 }
 .card-hover-border:hover {
-  background: linear-gradient(#131C31, #131C31) padding-box, linear-gradient(to right, #ea340c, rgb(11, 209, 209)) border-box;
+  background: linear-gradient(#131C31, #131C31) padding-box, linear-gradient(to right, #ff265c, rgb(11, 209, 209)) border-box;
   border-radius: 16px;
   border: 1px solid transparent;
 }
@@ -599,7 +599,7 @@ h6 {
 }
 
 .color-linear {
-  background: linear-gradient(90deg, #ea340c, #ea340c 51%, #ea340c) var(--x, 0)/200%;
+  background: linear-gradient(90deg, #ff265c, #ff265c 51%, #ff265c) var(--x, 0)/200%;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
   background-clip: text !important;
@@ -659,7 +659,7 @@ h6 {
   vertical-align: middle;
 }
 .pagination li a:hover {
-  background-image: linear-gradient(90deg, #ea340c, #ea340c 51%, #ea340c) var(--x, 0)/200%;
+  background-image: linear-gradient(90deg, #ff265c, #ff265c 51%, #ff265c) var(--x, 0)/200%;
 }
 
 .bdrd-8 {
@@ -761,7 +761,7 @@ h6 {
   background-color: #131C31;
 }
 .hover-neon:hover {
-  background: linear-gradient(#131C31, #131C31) padding-box, linear-gradient(to right, #ea340c, #ea340c) border-box;
+  background: linear-gradient(#131C31, #131C31) padding-box, linear-gradient(to right, #ff265c, #ff265c) border-box;
   border-radius: 16px;
   border: 1px solid transparent;
   box-shadow: rgba(11, 209, 209, 0.2) 0px 3px 20px;
@@ -1261,7 +1261,7 @@ a.text-brand-3:hover {
 }
 
 .cb-container input:checked ~ .checkmark {
-  border: 2px solid #ea340c;
+  border: 2px solid #ff265c;
 }
 
 .cb-container .text-small {
@@ -1555,7 +1555,7 @@ input {
   width: 100%;
 }
 .card-style-1:hover h6 {
-  color: #ea340c !important;
+  color: #ff265c !important;
 }
 .card-style-1:hover .card-image img {
   transform: scale(1.1);
@@ -1570,7 +1570,7 @@ input {
   border-radius: 8px;
 }
 .card-style-1 .card-image .link-post:hover h4 {
-  color: #ea340c !important;
+  color: #ff265c !important;
 }
 .card-style-1 .card-image .card-info {
   position: absolute;
@@ -1627,7 +1627,7 @@ input {
   color: #0EA5EA !important;
 }
 .card-blog-1:hover h4.color-white {
-  color: #ea340c !important;
+  color: #ff265c !important;
 }
 
 .card-blog-2 {
@@ -1672,7 +1672,7 @@ input {
   margin-bottom: 60px;
 }
 .card-list-posts:hover h5.color-white {
-  color: #ea340c !important;
+  color: #ff265c !important;
 }
 .card-list-posts .card-image {
   width: 270px;
@@ -1890,7 +1890,7 @@ input {
 .preloader-dots {
   --uib-size: 40px;
   --uib-speed: .9s;
-  --uib-color: #ea340c;
+  --uib-color: #ff265c;
   position: relative;
   height: calc(var(--uib-size) / 2);
   width: var(--uib-size);
@@ -5259,7 +5259,7 @@ input {
   background-position: center;
 }
 .box-socials a:hover {
-  background: linear-gradient(90deg, #ea340c, #ea340c 51%, #ea340c) var(--x, 0)/200%;
+  background: linear-gradient(90deg, #ff265c, #ff265c 51%, #ff265c) var(--x, 0)/200%;
   transition: all 0.2s;
 }
 
@@ -5310,7 +5310,7 @@ input {
   background-size: auto 14px;
 }
 .box-banner-4 .box-socials a:hover {
-  background: linear-gradient(90deg, #ea340c, #ea340c 51%, #ea340c) var(--x, 0)/200%;
+  background: linear-gradient(90deg, #ff265c, #ff265c 51%, #ff265c) var(--x, 0)/200%;
 }
 
 .calendar-icon {

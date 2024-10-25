@@ -814,7 +814,7 @@ header .header-col.mid .social-icons {
     height: 36px;
     font-size: 14px;
     border: none;
-    background: #ff4200;
+    background: #ff265c;
     color: #eceff3;
 }
 
@@ -2431,12 +2431,12 @@ img.grayscale{
 .error {
     display: none;
     margin-top: 30px;
-    color: #e7505a;
+    color: #ff265c;
     clear: both;
     padding-top: 20px;
     padding: 20px;
     background: rgba(231, 80, 90, .1);
-    border: solid 1px #e7505a;
+    border: solid 1px #ff265c;
 }
 
 .success {
@@ -2772,7 +2772,7 @@ footer:not(.footer-light) #form_subscribe.form-dark input[type=text] {
 }
 
 .error_input {
-    border-bottom: solid 1px #ff0000 !important;
+    border-bottom: solid 1px #ff265c !important;
 }
 
 
@@ -4347,7 +4347,7 @@ h2.hs1 i {
     font-size: 48px;
     position: relative;
     top: 10px;
-    color: #ff0042;
+    color: #ff265c;
     margin: 0 10px 0 10px;
 }
 
